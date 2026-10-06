@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fiche mémo des commandes Git</title>
+</head>
+<body>
+
+  <h1>Commandes Git indispensable</h1>
+
+  <div class="commandes">
+    <h2>1. Configuration de base</h2>
+        <ul>
+            <li>git config --global user.name "votre nom"</li>
+                <p> Nécessaire pour définir le pseudo</p>
+            <li>git config --global user.email "votre email"</li>
+                <p> Nécessaire pour définir l'adresse mail</p>
+            <li>git config --global core.editor "votre éditeur de texte"</li>
+                <p> Nécessaire pour définir l'éditeur de texte par défaut</p>
+        </ul>
+  </div>
+
+  <div class="commandes">
+    <h2>2. Commandes indispensables</h2>
+
+    <div class="commande">
+        <h3>2.1 Git init</h3>
+        <p lang="fr"><strong>FR :</strong>
+            Transforme un dossier ordinaire (locaux) en dépôt Git en créant le dossier caché <code>.git</code>.
+            <strong>Nécessaire</strong> au début d'un projet créé en local : sans elle, Git ne suit aucun fichier.
+            Exemple : <code>git init</code>
+        </p>
+        <p lang="mg"><strong>MG :</strong>
+            Ilaina raha mbola en local ilay dossier ka hovaina ho lasa dépot git.
+        </p>
+    </div>
+
+    <div class="commande">
+        <h3>2.2 Git clone</h3>
+        <p lang="fr"><strong>FR :</strong>
+            Télécharge un dépôt distant (GitHub) avec tout son historique et configure automatiquement <code>origin</code>.
+            <strong>Nécessaire</strong> quand le projet existe déjà en ligne et que tu veux le récupérer sur ta machine,
+            à la place de <code>init</code> + <code>remote add</code>.
+            Exemple : <code>git clone https://github.com/user/projet.git</code>
+        </p>
+        <p lang="mg"><strong>MG :</strong>
+            Ampiasaina rehefa hampiasa ny dépot efa misy any amin'ny Github.
+            Ohatra: <code>git clone https://github.com/user/projet.git</code>
+        </p>
+    </div>
+
+    <div class="commande">
+        <h3>2.3 Git add</h3>
+        <p lang="fr"><strong>FR :</strong>
+            Place les fichiers modifiés ou nouveaux dans la « zone de préparation » (staging area).
+            <strong>Nécessaire</strong> avant un commit : Git ne commite que ce qui a été ajouté,
+            ce qui permet de choisir précisément ce qui sera enregistré.
+            Exemples : <code>git add index.html</code> (un fichier), <code>git add .</code> (tout)
+        </p>
+        <p lang="mg"><strong>MG :</strong>
+            Ilaina rehefa nanova zavatra amin'ny fichier ampiasainao ka ho ataonao any amin'ny Github avieo. Atao alohan'ny git commit.
+            Ohatra: <code>git add index.html</code> (rakitra iray), <code>git add .</code> (rehetra)
+        </p>
+    </div>
+
+    <div class="commande">
+        <h3>2.4 Git commit -m "titre modification"</h3>
+        <p lang="fr"><strong>FR :</strong>
+            Enregistre dans l'historique une « photo » des fichiers préparés, avec un message qui décrit le changement.
+            <strong>Nécessaire</strong> pour sauvegarder une étape de ton travail et pouvoir y revenir plus tard.
+            Le message doit être court et clair.
+            Exemple : <code>git commit -m "Ajout de la section git init"</code>
+        </p>
+        <p lang="mg"><strong>MG :</strong>
+            Mienregister ny fanovana nato tamina dépot iary ary arahina famaritana kely momba ilay fanovana.
+            Ohatra: <code>git commit -m "Fanampiana ny fizarana git init"</code>
+        </p>
+    </div>
+
+    <div class="commande">
+        <h3>2.5 Git branch</h3>
+        <p lang="fr"><strong>FR :</strong>
+            Liste, crée ou supprime des branches (des lignes de développement parallèles).
+            <strong>Nécessaire</strong> pour tester une nouvelle fonctionnalité sans toucher à la version stable (<code>main</code>).
+            Exemples : <code>git branch</code> (lister), <code>git branch nouvelle-fonction</code> (créer),
+            <code>git branch -d nouvelle-fonction</code> (supprimer)
+        </p>
+        <p lang="mg"><strong>MG :</strong>
+            maneho ny branche rehetra misy, na ampiasaina hicréer brach vaovao (Branche: karazana lieu de travail ao anaty na repository iray).
+            Ohatra: 
+            <ol>
+                <li><code>git branch</code> (mampiseho),</li> 
+                <li></li><code>git branch nouvelle-fonction</code> (mamorona),</li>
+                <li></li><code>git branch -d nouvelle-fonction</code> (mamafa)</li>
+            </ol>
+        </p>
+    </div>
+
+    <div class="commande">
+        <h3>2.6 Git switch</h3>
+        <p lang="fr"><strong>FR :</strong>
+            Change de branche : les fichiers du dossier prennent l'état de la branche choisie.
+            <strong>Nécessaire</strong> pour passer de <code>main</code> à une branche de travail et inversement.
+            Exemples : <code>git switch nouvelle-fonction</code>, <code>git switch -c autre-branche</code> (crée puis bascule)
+        </p>
+        <p lang="mg"><strong>MG :</strong>
+            Manova ny branche: mametraka hoe ito ny branche hapiasaiko eto.
+            <strong>Ilaina</strong> mba hifindra avy amin'ny <code>main</code> mankany amin'ny branche hafa.
+            Ohatra: <code>git switch nouvelle-fonction</code>, <code>git switch -c autre-branche</code> (mamorona avy eo mifindra)
+        </p>
+    </div>
+
+    <div class="commande">
+        <h3>2.7 Git fetch</h3>
+        <p lang="fr"><strong>FR :</strong>
+            Télécharge les nouveautés du dépôt distant <strong>sans les fusionner</strong> avec ton travail local.
+            <strong>Nécessaire</strong> pour voir ce qui a changé sur GitHub avant de décider de l'intégrer,
+            sans risque de conflit immédiat.
+            Exemple : <code>git fetch origin</code>
+        </p>
+        <p lang="mg"><strong>MG :</strong>
+            Maka ny zavatra vaovao avy amin'ny branche hafa fa mbola tsy mampiditra na manova ny code ao aminao.
+            <strong>Ilaina</strong> mba hijerena izay niova tao amin'ny GitHub alohan'ny hanapahana hampiditra azy,
+            tsy misy loza hisian'ny fifandirana (conflit) avy hatrany.
+            Ohatra: <code>git fetch origin</code>
+        </p>
+    </div>
+
+    <div class="commande">
+        <h3>2.8 Git push</h3>
+        <p lang="fr"><strong>FR :</strong>
+            Envoie tes commits locaux vers le dépôt distant (GitHub).
+            <strong>Nécessaire</strong> pour sauvegarder ton travail en ligne et le partager avec d'autres.
+            La première fois, <code>-u</code> mémorise la branche distante.
+            Exemples : <code>git push -u origin main</code> (première fois), <code>git push</code> (ensuite)
+        </p>
+        <p lang="mg"><strong>MG :</strong>
+            Mandefa ny commit local anaty machine mankany amin'ny dépot GitHub.
+            <strong>Ilaina</strong> mba hitahiry an-tserasera ny asanao sy hizarana azy amin'ny hafa.
+            Amin'ny voalohany, apetaka ny <code>-u</code> mba itenenana fa à distant ilay dépot.
+            Ohatra: <code>git push -u origin main</code> (voalohany), <code>git push</code> (aorian'izay)
+        </p>
+    </div>
+
+    <div class="commande">
+        <h3>2.9 Git pull</h3>
+        <p lang="fr"><strong>FR :</strong>
+            Récupère les nouveautés du dépôt distant <strong>et</strong> les fusionne dans ta branche
+            (équivaut à <code>fetch</code> + <code>merge</code>).
+            <strong>Nécessaire</strong> avant de commencer à travailler, ou quand un <code>push</code> est refusé
+            parce que GitHub contient des commits que tu n'as pas.
+            Exemple : <code>git pull origin main</code>
+        </p>
+        <p lang="mg"><strong>MG :</strong>
+            Mitovy amin'ny fetch fa izy fotsiny tonga de mifusionner miaraka amin'ny code an'ilay zavatra vaovao niova <strong>ary</strong> mampitambatra azy amina brance ray      (mitovy amin'ny <code>fetch</code> + <code>merge</code>).
+            <strong>Ilaina</strong> alohan'ny fanombohana miasa, na rehefa lavina ny <code>push</code>
+            satria misy commit ao amin'ny GitHub tsy ananao.
+            Ohatra: <code>git pull origin main</code>
+        </p>
+    </div>
+
+    <div class="commande">
+        <h3>2.10 Git commit (variantes)</h3>
+        <p lang="fr"><strong>FR :</strong>
+            Cette commande existe déjà au point 2.4. Voici ses variantes utiles :
+            <code>git commit</code> sans <code>-m</code> ouvre un éditeur pour écrire un message détaillé,
+            et <code>git commit --amend</code> corrige le dernier commit (message oublié ou fichier manquant).
+            <strong>Nécessaire</strong> pour rectifier une erreur avant de faire le <code>push</code>.
+        </p>
+        <p lang="mg"><strong>MG :</strong>
+            Efa voalaza tao amin'ny 2.4 ity baiko ity. Ireto ny karazany mahasoa:
+            ny <code>git commit</code> tsy misy <code>-m</code> dia manokatra mpanova soratra hanoratana hafatra amin'ny antsipiriany,
+            ary ny <code>git commit --amend</code> dia manitsy ny commit farany (hafatra adino na rakitra tsy ampy).
+            <strong>Ilaina</strong> hanitsiana hadisoana alohan'ny hanaovana ny <code>push</code>.
+        </p>
+    </div>
+
+    <div class="commande">
+        <h3>2.11 Git merge</h3>
+        <p lang="fr"><strong>FR :</strong>
+            Fusionne une branche dans la branche actuelle.
+            <strong>Nécessaire</strong> pour intégrer dans <code>main</code> le travail terminé sur une autre branche.
+            Si les deux branches ont modifié les mêmes lignes, Git signale un conflit à résoudre à la main.
+            Exemple : <code>git switch main</code> puis <code>git merge nouvelle-fonction</code>
+        </p>
+        <p lang="mg"><strong>MG :</strong>
+            Mifusionner branche iray amin'ny branche actuellenao.
+            <strong>Ilaina</strong> mba hampidirana ao amin'ny <code>main</code> ny asa vita tany amin'ny branche hafa.
+            Raha nanova ny andalana mitovy ny sampana roa, dia manambara fifandirana (conflit) i Git ary tsy maintsy ovaina amin'ny tanana.
+            Ohatra: <code>git switch main</code> avy eo <code>git merge nouvelle-fonction</code>
+        </p>
+    </div>
+</div>
+
+</body>
+</html>
