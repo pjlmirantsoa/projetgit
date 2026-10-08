@@ -200,17 +200,17 @@
   <!-- ===================== QUIZ ===================== -->
   <div class="commandes quiz" id="quiz">
     <h2>3. Quiz : teste tes connaissances</h2>
-    <p class="quiz-intro">Réponds aux 8 questions puis clique sur « Valider mes réponses ».</p>
+    <p class="quiz-intro">20 questions couvrent toutes les commandes de la fiche (configuration, init, clone, add, commit, branch, switch, fetch, push, pull, merge). Clique sur « Valider » pour corriger, « Voir les réponses » pour réviser, ou « Réinitialiser » pour recommencer (l'ordre des choix est mélangé à chaque fois).</p>
 
     <form id="quiz-form" novalidate>
 
       <div class="identite">
         <label for="prenom">Ton prénom</label>
-        <input type="text" id="prenom" name="prenom" placeholder="Ex : Hery" autocomplete="given-name">
+        <input type="text" id="prenom" name="prenom" placeholder="Ex : Mirantsoa" autocomplete="given-name">
       </div>
 
       <fieldset class="question" data-type="radio" data-answer="init"
-                data-expl="<code>git init</code> crée le dossier caché <code>.git</code> et transforme le dossier en dépôt.">
+                data-expl="<code>git init</code> crée le dossier caché <code>.git</code> et initialise le dépôt Git dans le dossier actuel.">
         <legend><span class="num">1</span> Quelle commande transforme un dossier ordinaire en dépôt Git ?</legend>
         <label class="choix"><input type="radio" name="q1" value="clone"> <code>git clone</code></label>
         <label class="choix"><input type="radio" name="q1" value="init"> <code>git init</code></label>
@@ -219,7 +219,7 @@
       </fieldset>
 
       <fieldset class="question" data-type="radio" data-answer="clone"
-                data-expl="<code>git clone</code> télécharge le dépôt distant avec tout son historique et configure <code>origin</code>.">
+                data-expl="<code>git clone</code> copie un dépôt distant sur l’ordinateur, avec son historique, et configure généralement le dépôt distant nommé <code>origin</code>.">
         <legend><span class="num">2</span> Quelle commande récupère un dépôt GitHub existant avec tout son historique ?</legend>
         <label class="choix"><input type="radio" name="q2" value="clone"> <code>git clone</code></label>
         <label class="choix"><input type="radio" name="q2" value="push"> <code>git push</code></label>
@@ -228,7 +228,7 @@
       </fieldset>
 
       <fieldset class="question" data-type="radio" data-answer="add"
-                data-expl="<code>git add</code> place les fichiers dans la zone de préparation, avant le commit.">
+                data-expl="<code>git add</code> place les modifications sélectionnées dans la zone de préparation (staging), avant leur enregistrement avec <code>git commit</code>.">
         <legend><span class="num">3</span> Quelle commande faut-il utiliser AVANT <code>git commit</code> pour choisir les fichiers à enregistrer ?</legend>
         <label class="choix"><input type="radio" name="q3" value="add"> <code>git add</code></label>
         <label class="choix"><input type="radio" name="q3" value="merge"> <code>git merge</code></label>
@@ -237,7 +237,7 @@
       </fieldset>
 
       <fieldset class="question" data-type="select" data-answer="push"
-                data-expl="<code>git push</code> envoie tes commits locaux vers GitHub.">
+                data-expl="<code>git push</code> envoie les commits locaux vers le dépôt distant, par exemple sur GitHub.">
         <legend><span class="num">4</span> Quelle commande envoie tes commits locaux vers GitHub ?</legend>
         <label for="q4" class="sr-only">Choisis une commande</label>
         <select id="q4" name="q4">
@@ -251,7 +251,7 @@
       </fieldset>
 
       <fieldset class="question" data-type="radio" data-answer="fetchmerge"
-                data-expl="<code>git pull</code> équivaut à <code>git fetch</code> + <code>git merge</code>.">
+                data-expl="<code>git pull</code> récupère les changements du dépôt distant puis les intègre à la branche locale. Dans le cas courant, cela revient à <code>git fetch</code> suivi de <code>git merge</code>.">
         <legend><span class="num">5</span> <code>git pull</code> équivaut à…</legend>
         <label class="choix"><input type="radio" name="q5" value="addcommit"> <code>git add</code> + <code>git commit</code></label>
         <label class="choix"><input type="radio" name="q5" value="fetchmerge"> <code>git fetch</code> + <code>git merge</code></label>
@@ -260,7 +260,7 @@
       </fieldset>
 
       <fieldset class="question" data-type="checkbox" data-answer="branch,switch,merge"
-                data-expl="Les commandes liées aux branches sont <code>branch</code>, <code>switch</code> et <code>merge</code>. <code>add</code> et <code>clone</code> n'en font pas partie.">
+                data-expl="<code>git branch</code> permet de gérer les branches, <code>git switch</code> permet de changer de branche et <code>git merge</code> intègre une branche dans la branche actuelle.">
         <legend><span class="num">6</span> Quelles commandes concernent les branches ? <em>(plusieurs réponses possibles)</em></legend>
         <label class="choix"><input type="checkbox" name="q6" value="branch"> <code>git branch</code></label>
         <label class="choix"><input type="checkbox" name="q6" value="switch"> <code>git switch</code></label>
@@ -271,7 +271,7 @@
       </fieldset>
 
       <fieldset class="question" data-type="text" data-answer="--amend,amend"
-                data-expl="<code>git commit --amend</code> corrige le dernier commit (message oublié ou fichier manquant).">
+                data-expl="<code>git commit --amend</code> permet de modifier le dernier commit, par exemple pour corriger son message ou y ajouter un fichier oublié.">
         <legend><span class="num">7</span> Quelle option de <code>git commit</code> permet de corriger le dernier commit ?</legend>
         <label for="q7" class="sr-only">Ta réponse</label>
         <input type="text" id="q7" name="q7" placeholder="Ex : --option" autocomplete="off" autocapitalize="none" spellcheck="false">
@@ -279,7 +279,7 @@
       </fieldset>
 
       <fieldset class="question" data-type="radio" data-answer="fetch"
-                data-expl="<code>git fetch</code> télécharge les nouveautés sans les fusionner, donc sans risque de conflit immédiat.">
+                data-expl="<code>git fetch</code> télécharge les informations et les nouveaux commits du dépôt distant sans les intégrer automatiquement à la branche actuelle.">
         <legend><span class="num">8</span> Quelle commande télécharge les nouveautés du dépôt distant <strong>sans</strong> les fusionner ?</legend>
         <label class="choix"><input type="radio" name="q8" value="pull"> <code>git pull</code></label>
         <label class="choix"><input type="radio" name="q8" value="fetch"> <code>git fetch</code></label>
@@ -287,6 +287,136 @@
         <p class="feedback" aria-live="polite"></p>
       </fieldset>
 
+      <fieldset class="question" data-type="radio" data-answer="fetch"
+                data-expl="<code>git branch nouvelle-fonction</code> crée une branche appelée <code>nouvelle-fonction</code>. <code>git branch -d</code> la supprime, tandis que <code>git switch</code> sert à changer de branche.">
+        <legend><span class="num">9</span> Quelle commande permet de créer une nouvelle branche <code>nouvelle-fonction</code> ?</legend>
+        <label class="choix"><input type="radio" name="q9" value="branch"> <code>git branch </code></label>
+        <label class="choix"><input type="radio" name="q9" value="branch"> <code>git branch -d nouvelle-fonction</code></label>
+        <label class="choix"><input type="radio" name="q9" value="switch"> <code>git switch nouvelle-fonction</code></label>
+        <label class="choix"><input type="radio" name="q9" value="branch"> <code>git branch nouvelle-fonction</code></label>
+        <p class="feedback" aria-live="polite"></p>
+      </fieldset>
+
+      <fieldset class="question" data-type="select" data-answer="push"
+                data-expl="<code>git branch -d nouvelle-fonction</code> supprime la branche locale <code>nouvelle-fonction</code> si Git considère qu’elle a déjà été fusionnée.">
+        <legend><span class="num">10</span> Que fait git branch -d nouvelle-fonction ?</legend>
+        <label for="q10" class="sr-only">Choisis une commande</label>
+        <select id="q10" name="q10">
+          <option value="">-- Choisis une commande --</option>
+          <option value="liste">Elle liste les branches</option>
+          <option value="supprime">Elle supprime la branche</option>
+          <option value="fusionne">Elle fusionne la branche</option>
+        </select>
+        <p class="feedback" aria-live="polite"></p>
+      </fieldset>
+
+      <fieldset class="question" data-type="radio" data-answer="fetch"
+                data-expl="<code>git switch -c autre-branche</code> crée la branche <code>autre-branche</code> et bascule immédiatement dessus. <code>git switch autre-branche</code> sert à basculer vers une branche qui existe déjà.">
+        <legend><span class="num">11</span> Quelle commande crée une branche puis bascule dessus?</legend>
+        <label class="choix"><input type="radio" name="q11" value="switch"> <code>git switch -c autre-branche </code></label>
+        <label class="choix"><input type="radio" name="q11" value="switch"> <code>git switch autre-branche</code></label>
+        <label class="choix"><input type="radio" name="q11" value="branch"> <code>git branch autre-branche</code></label>
+        <label class="choix"><input type="radio" name="q11" value="merge"> <code>git merge autre-branche</code></label>
+        <p class="feedback" aria-live="polite"></p>
+      </fieldset>
+
+      <fieldset class="question" data-type="radio" data-answer="fetch"
+                data-expl="<code>git fetch origin</code> récupère les nouveautés du dépôt distant nommé <code>origin</code> sans les fusionner dans la branche locale.">
+        <legend><span class="num">11</span> Quelle commande crée une branche puis bascule dessus?</legend>
+        <label class="choix"><input type="radio" name="q11" value="switch"> <code>git switch -c autre-branche </code></label>
+        <label class="choix"><input type="radio" name="q11" value="switch"> <code>git switch autre-branche</code></label>
+        <label class="choix"><input type="radio" name="q11" value="branch"> <code>git branch autre-branche</code></label>
+        <label class="choix"><input type="radio" name="q11" value="merge"> <code>git merge autre-branche</code></label>
+        <p class="feedback" aria-live="polite"></p>
+      </fieldset>   
+     
+      <fieldset class="question" data-type="radio" data-answer="fetch"
+                data-expl="<code>git push -u origin main</code> envoie la branche <code>main</code> vers <code>origin</code> et configure le suivi de la branche distante pour les prochains <code>push</code> et <code>pull</code>.">
+        <legend><span class="num">12</span>Quelle commande télécharge les nouveautés du dépôt distant <code>sans les fusionner?</code></legend>
+        <label class="choix"><input type="radio" name="q12" value="fetch"> <code>git fetch origin</code></label>
+        <label class="choix"><input type="radio" name="q12" value="push"> <code>git push</code></label>
+        <label class="choix"><input type="radio" name="q12" value="pull"> <code>git pull origin main</code></label>
+        <label class="choix"><input type="radio" name="q12" value="merge"> <code>git merge nouvelle-fonction</code></label>
+        <p class="feedback" aria-live="polite"></p>
+      </fieldset>
+      
+      <fieldset class="question" data-type="text" data-answer="--amend,amend"
+                data-expl="<code>git push -u origin main</code> envoie la branche <code>main</code> vers <code>origin</code> et configure le suivi de la branche distante pour les prochains <code>push</code> et <code>pull</code>.">
+        <legend><span class="num">13</span> Complète: git push <label for="q13" class="sr-only">Ta réponse</label> origin main (la prémière fois, pour mémoriserla branche distante</legend>
+        <input type="text" id="q13" name="q13" placeholder="Ex : --option" autocomplete="off" autocapitalize="none" spellcheck="false">
+        <p class="feedback" aria-live="polite"></p>
+      </fieldset>
+
+      <fieldset class="question" data-type="radio" data-answer="fetch"
+                data-expl="<code>git pull</code> récupère les changements du dépôt distant puis les intègre à la branche locale ; dans le cas courant, il effectue un <code>fetch</code> puis un <code>merge</code>.">
+        <legend><span class="num">14</span> Git pull équivaut à :</legend>
+        <label class="choix"><input type="radio" name="q14" value="push"> <code>git push + git merge </code></label>
+        <label class="choix"><input type="radio" name="q14" value="fetch"> <code>git fetch + git merge</code></label>
+        <label class="choix"><input type="radio" name="q14" value="init"> <code>git init + git clone</code></label>
+        <label class="choix"><input type="radio" name="q14" value="add"> <code>git add + git commit</code></label>
+        <p class="feedback" aria-live="polite"></p>
+      </fieldset>
+
+       <fieldset class="question" data-type="radio" data-answer="fetch"
+                data-expl="<code>git commit</code> sans l’option <code>-m</code> ouvre l’éditeur de texte configuré par Git pour permettre d’écrire le message du commit.">
+        <legend><span class="num">15</span>Que fait git commit sans l'option -m?</legend>
+        <label class="choix"><input type="radio" name="q15" value="envoie"> <code>Elle envoie les commits github</code></label>
+        <label class="choix"><input type="radio" name="q15" value="ouvre"> <code>Elle ouvre un éditeur pour écrire un message détaillé</code></label>
+        <label class="choix"><input type="radio" name="q15" value="crée"> <code>Elle crée une nouvelle branche</code></label>
+        <label class="choix"><input type="radio" name="q15" value="annule"> <code>Elle annule le dernier commit</code></label>
+        <p class="feedback" aria-live="polite"></p>
+      </fieldset>
+
+      <fieldset class="question" data-type="text" data-answer="--amend,amend"
+                data-expl="<code>git commit --amend</code> permet de modifier le dernier commit, par exemple pour corriger son message ou y ajouter un fichier oublié. Il ne crée pas simplement un nouveau commit indépendant.">
+        <legend><span class="num">16</span> Complète: git commit <label for="q16" class="sr-only">Ta réponse</label> pour corriger le dernier commit <code> (Message oublié ou fichier manquant)</code></legend>
+        <input type="text" id="q16" name="q16" placeholder="Tape ta réponse" autocomplete="off" autocapitalize="none" spellcheck="false">
+        <p class="feedback" aria-live="polite"></p>
+      </fieldset>
+
+      <fieldset class="question" data-type="radio" data-answer="fetch"
+                data-expl="Pour intégrer <code>nouvelle-fonction</code> dans <code>main</code>, il faut d’abord basculer sur <code>main</code> avec <code>git switch main</code>, puis exécuter <code>git merge nouvelle-fonction</code>.">
+        <legend><span class="num">17</span> Pour intégrer nouvelle-fonction dans main, que faut-il faire?</legend>
+        <label class="choix"><input type="radio" name="q17" value="switch"> <code>git switch main puis git merge nouvelle-fonction</code></label>
+        <label class="choix"><input type="radio" name="q17" value="fetch"> <code>git fetch puis git add</code></label>
+        <label class="choix"><input type="radio" name="q17" value="branch"> <code>git branch main puis git push</code></label>
+        <label class="choix"><input type="radio" name="q17" value="switch"> <code>git switch nouvelle-fonction puis git merge main</code></label>
+        <p class="feedback" aria-live="polite"></p>
+      </fieldset>
+
+      <fieldset class="question" data-type="radio" data-answer="fetch"
+                data-expl="Un conflit de fusion apparaît lorsque Git ne peut pas réconcilier automatiquement certaines modifications, par exemple lorsque deux branches ont modifié les mêmes lignes. Il faut alors résoudre le conflit avant de terminer le merge.">
+        <legend><span class="num">18</span> Quand deux branches ont modifié les <code> mêmes lignes, que signale Git lors d'un merge ? </code> :</legend>
+        <label class="choix"><input type="radio" name="q18" value="connexion"> <code>Une erreur de connexion </code></label>
+        <label class="choix"><input type="radio" name="q18" value="hasard"> <code>Rien , Git choisit au hasard</code></label>
+        <label class="choix"><input type="radio" name="q18" value="conflit"> <code>Un conflit à résoudre à la main</code></label>
+        <label class="choix"><input type="radio" name="q18" value="dépôt"> <code>Un nouveau dépôt à créer</code></label>
+        <p class="feedback" aria-live="polite"></p>
+      </fieldset>
+
+      <fieldset class="question" data-type="radio" data-answer="fetch"
+                data-expl="<code>git pull</code>, <code>git push</code>, <code>git clone</code> et <code>git fetch</code> permettent d’échanger des données avec un dépôt distant. <code>git switch</code>, <code>git init</code> et <code>git add</code> n’effectuent pas directement cet échange.">
+        <legend><span class="num">19</span> Quelles commandes échangent avec le dépôt <code>distant (GitHub)</code></legend>
+        <label class="choix"><input type="checkbox" name="q19" value="pull"> <code>git pull</code></label>
+        <label class="choix"><input type="checkbox" name="q19" value="push"> <code>git push</code></label>
+        <label class="choix"><input type="checkbox" name="q19" value="clone"> <code>git clone</code></label>
+        <label class="choix"><input type="checkbox" name="q19" value="switch"> <code>git switch</code></label>
+        <label class="choix"><input type="checkbox" name="q19" value="init"> <code>git init</code></label>
+        <label class="choix"><input type="checkbox" name="q19" value="fetch"> <code>git fetch</code></label>
+        <label class="choix"><input type="checkbox" name="q20" value="add"> <code>git add</code></label>
+        <p class="feedback" aria-live="polite"></p>
+      </fieldset>
+
+      <fieldset class="question" data-type="radio" data-answer="fetch"
+                data-expl="Le flux de travail habituel est <code>git add</code> pour préparer les modifications, <code>git commit</code> pour les enregistrer dans l’historique local, puis <code>git push</code> pour envoyer les commits vers le dépôt distant.">
+        <legend><span class="num">20</span> Quel est l'ordre normal pour sauvegarder puis envoyer son travail? </legend>
+        <label class="choix"><input type="radio" name="q20" value="push"> <code> git push → git commit → git add </code></label>
+        <label class="choix"><input type="radio" name="q20" value="add"> <code>git add → git push → git commit</code></label>
+        <label class="choix"><input type="radio" name="q20" value="add"> <code>git add → git commit → git push</code></label>
+        <label class="choix"><input type="radio" name="q20" value="commit"> <code>git commit → git push → git add</code></label>
+        <p class="feedback" aria-live="polite"></p>
+      </fieldset>
+      
       <div class="quiz-actions">
         <button type="submit" class="btn btn-primary">Valider mes réponses</button>
         <button type="reset" class="btn btn-secondary" id="btn-reset">Recommencer</button>
