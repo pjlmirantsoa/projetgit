@@ -1,3 +1,11 @@
+
+Style · CSS
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+ 
 /* Page */
 body {
   font-family: Arial, Helvetica, sans-serif;
@@ -8,7 +16,7 @@ body {
   padding: 30px 20px;
   line-height: 1.6;
 }
-
+ 
 /* Titre principal */
 h1 {
   text-align: center;
@@ -18,7 +26,7 @@ h1 {
   border-radius: 10px;
   margin-bottom: 40px;
 }
-
+ 
 /* Grands sous-titres */
 h2 {
   color: #2c3e50;
@@ -26,7 +34,20 @@ h2 {
   padding-bottom: 8px;
   margin-top: 40px;
 }
-
+ 
+/* Liste de configuration */
+.commandes > ul {
+  padding-left: 20px;
+}
+ 
+.commandes > ul li {
+  margin-bottom: 12px;
+}
+ 
+.commandes > ul li p {
+  margin: 4px 0 0;
+}
+ 
 /* Carte d'une commande (h3 + 2 paragraphes) */
 .commande {
   background-color: #ffffff;
@@ -35,7 +56,7 @@ h2 {
   margin-top: 25px;
   overflow: hidden; /* garde les coins arrondis du h3 */
 }
-
+ 
 /* Sous-titres des commandes */
 .commande h3 {
   color: #ffffff;
@@ -44,8 +65,9 @@ h2 {
   margin: 0;
   font-family: "Courier New", monospace;
   font-size: 1.05em;
+  overflow-wrap: anywhere;
 }
-
+ 
 /* Paragraphes (français et malgache) */
 .commande p {
   margin: 0;
@@ -53,28 +75,28 @@ h2 {
   border-left: 5px solid transparent;
   min-height: 40px; /* garde la hauteur même si le paragraphe est vide */
 }
-
+ 
 /* Version française */
 .commande p[lang="fr"] {
   border-left-color: #2d6cdf;
 }
-
+ 
 /* Version malgache */
 .commande p[lang="mg"] {
   border-left-color: #2f9e55;
   background-color: #f3faf5;
   border-top: 1px dashed #dde3e8;
 }
-
+ 
 /* Étiquettes « FR : » et « MG : » (premier strong de chaque paragraphe) */
 .commande p[lang="fr"] > strong:first-child {
   color: #2d6cdf;
 }
-
+ 
 .commande p[lang="mg"] > strong:first-child {
   color: #2f9e55;
 }
-
+ 
 /* Extraits de commandes */
 code {
   background-color: #eef1f4;
@@ -83,4 +105,274 @@ code {
   border-radius: 4px;
   font-family: "Courier New", Consolas, monospace;
   font-size: 0.95em;
+  overflow-wrap: anywhere; /* évite le débordement des longues commandes sur mobile */
 }
+ 
+/* ===================== QUIZ ===================== */
+ 
+.quiz {
+  margin-top: 50px;
+}
+ 
+.quiz-intro {
+  margin-top: 15px;
+}
+ 
+#quiz-form {
+  margin-top: 20px;
+}
+ 
+/* Champ prénom */
+.identite {
+  background-color: #ffffff;
+  border: 1px solid #dde3e8;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+ 
+.identite label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+ 
+/* Champs texte et liste déroulante */
+#quiz-form input[type="text"],
+#quiz-form select {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px; /* 16px min : évite le zoom automatique sur iPhone */
+  font-family: inherit;
+  border: 1px solid #b8c2cc;
+  border-radius: 6px;
+  background-color: #ffffff;
+  color: #333;
+}
+ 
+#quiz-form input[type="text"]:focus,
+#quiz-form select:focus {
+  outline: 3px solid rgba(45, 108, 223, 0.35);
+  border-color: #2d6cdf;
+}
+ 
+/* Carte d'une question */
+.question {
+  background-color: #ffffff;
+  border: 1px solid #dde3e8;
+  border-left: 5px solid #2d6cdf;
+  border-radius: 8px;
+  padding: 15px;
+  margin: 0 0 20px;
+  min-width: 0; /* permet au fieldset de rétrécir sur mobile */
+}
+ 
+.question legend {
+  font-weight: bold;
+  color: #2c3e50;
+  padding: 0 8px;
+  max-width: 100%;
+}
+ 
+.question .num {
+  display: inline-block;
+  min-width: 26px;
+  height: 26px;
+  line-height: 26px;
+  margin-right: 6px;
+  text-align: center;
+  color: #ffffff;
+  background-color: #2c3e50;
+  border-radius: 50%;
+  font-size: 0.9em;
+}
+ 
+/* Choix (zones tactiles larges) */
+.choix {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  margin-top: 8px;
+  border: 1px solid #dde3e8;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: #fafbfc;
+}
+ 
+.choix:hover {
+  background-color: #eef4ff;
+  border-color: #2d6cdf;
+}
+ 
+.choix input {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  accent-color: #2d6cdf;
+}
+ 
+/* Texte masqué visuellement mais lu par les lecteurs d'écran */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+ 
+/* Correction */
+.feedback {
+  margin: 0;
+  font-size: 0.95em;
+}
+ 
+.question.correct,
+.question.incorrect {
+  /* espace réservé quand la correction apparaît */
+}
+ 
+.question.correct {
+  border-left-color: #2f9e55;
+  background-color: #f3faf5;
+}
+ 
+.question.incorrect {
+  border-left-color: #d9534f;
+  background-color: #fdf4f3;
+}
+ 
+.question.correct .feedback,
+.question.incorrect .feedback {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px dashed #dde3e8;
+}
+ 
+.question.correct .feedback {
+  color: #1f7a40;
+}
+ 
+.question.incorrect .feedback {
+  color: #b02a25;
+}
+ 
+/* Boutons */
+.quiz-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+ 
+.btn {
+  flex: 1 1 200px;
+  padding: 14px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  font-family: inherit;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+ 
+.btn-primary {
+  color: #ffffff;
+  background-color: #f05033;
+}
+ 
+.btn-primary:hover {
+  background-color: #d63f24;
+}
+ 
+.btn-secondary {
+  color: #2c3e50;
+  background-color: #e3e8ed;
+}
+ 
+.btn-secondary:hover {
+  background-color: #d3dae1;
+}
+ 
+.btn:focus-visible {
+  outline: 3px solid rgba(45, 108, 223, 0.5);
+  outline-offset: 2px;
+}
+ 
+/* Résultat */
+.resultat {
+  margin-top: 25px;
+  padding: 20px;
+  text-align: center;
+  font-size: 1.1em;
+  color: #ffffff;
+  background-color: #2c3e50;
+  border-radius: 10px;
+}
+ 
+.resultat[hidden] {
+  display: none;
+}
+ 
+/* ===================== MOBILE ===================== */
+ 
+/* Tablettes et petits écrans */
+@media (max-width: 600px) {
+  body {
+    padding: 15px 12px;
+    line-height: 1.5;
+  }
+ 
+  h1 {
+    font-size: 1.5em;
+    padding: 15px 12px;
+    margin-bottom: 25px;
+  }
+ 
+  h2 {
+    font-size: 1.25em;
+    margin-top: 30px;
+  }
+ 
+  .commande h3 {
+    font-size: 1em;
+    padding: 10px 12px;
+  }
+ 
+  .commande p {
+    padding: 12px;
+    border-left-width: 4px;
+  }
+ 
+  .question {
+    padding: 12px;
+  }
+ 
+  .question legend {
+    font-size: 0.98em;
+  }
+ 
+  /* Boutons empilés, pleine largeur */
+  .quiz-actions {
+    flex-direction: column;
+  }
+ 
+  .btn {
+    flex: none;
+    width: 100%;
+  }
+}
+ 
+/* Très petits écrans */
+@media (max-width: 360px) {
+  h1 {
+    font-size: 1.3em;
+  }
+ 
+  .choix {
+    padding: 10px;
+    gap: 10px;
+  }
+}
+ 
+Claude a terminé sa réponse.

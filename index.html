@@ -8,17 +8,23 @@
 </head>
 <body>
 
-  <h1>Commandes Git indispensable</h1>
+  <h1>Commandes Git indispensables</h1>
 
   <div class="commandes">
     <h2>1. Configuration de base</h2>
         <ul>
-            <li>git config --global user.name "votre nom"</li>
-                <p> Nécessaire pour définir le pseudo</p>
-            <li>git config --global user.email "votre email"</li>
-                <p> Nécessaire pour définir l'adresse mail</p>
-            <li>git config --global core.editor "votre éditeur de texte"</li>
-                <p> Nécessaire pour définir l'éditeur de texte par défaut</p>
+            <li>
+                <code>git config --global user.name "votre nom"</code>
+                <p>Nécessaire pour définir le pseudo</p>
+            </li>
+            <li>
+                <code>git config --global user.email "votre email"</code>
+                <p>Nécessaire pour définir l'adresse mail</p>
+            </li>
+            <li>
+                <code>git config --global core.editor "votre éditeur de texte"</code>
+                <p>Nécessaire pour définir l'éditeur de texte par défaut</p>
+            </li>
         </ul>
   </div>
 
@@ -89,12 +95,9 @@
         </p>
         <p lang="mg"><strong>MG :</strong>
             maneho ny branche rehetra misy, na ampiasaina hicréer brach vaovao (Branche: karazana lieu de travail ao anaty na repository iray).
-            Ohatra: 
-            <ol>
-                <li><code>git branch</code> (mampiseho),</li> 
-                <li></li><code>git branch nouvelle-fonction</code> (mamorona),</li>
-                <li></li><code>git branch -d nouvelle-fonction</code> (mamafa)</li>
-            </ol>
+            Ohatra: <code>git branch</code> (mampiseho),
+            <code>git branch nouvelle-fonction</code> (mamorona),
+            <code>git branch -d nouvelle-fonction</code> (mamafa)
         </p>
     </div>
 
@@ -192,7 +195,188 @@
             Ohatra: <code>git switch main</code> avy eo <code>git merge nouvelle-fonction</code>
         </p>
     </div>
-</div>
+  </div>
+
+  <!-- ===================== QUIZ ===================== -->
+  <div class="commandes quiz" id="quiz">
+    <h2>3. Quiz : teste tes connaissances</h2>
+    <p class="quiz-intro">Réponds aux 8 questions puis clique sur « Valider mes réponses ».</p>
+
+    <form id="quiz-form" novalidate>
+
+      <div class="identite">
+        <label for="prenom">Ton prénom</label>
+        <input type="text" id="prenom" name="prenom" placeholder="Ex : Hery" autocomplete="given-name">
+      </div>
+
+      <fieldset class="question" data-type="radio" data-answer="init"
+                data-expl="<code>git init</code> crée le dossier caché <code>.git</code> et transforme le dossier en dépôt.">
+        <legend><span class="num">1</span> Quelle commande transforme un dossier ordinaire en dépôt Git ?</legend>
+        <label class="choix"><input type="radio" name="q1" value="clone"> <code>git clone</code></label>
+        <label class="choix"><input type="radio" name="q1" value="init"> <code>git init</code></label>
+        <label class="choix"><input type="radio" name="q1" value="branch"> <code>git branch</code></label>
+        <p class="feedback" aria-live="polite"></p>
+      </fieldset>
+
+      <fieldset class="question" data-type="radio" data-answer="clone"
+                data-expl="<code>git clone</code> télécharge le dépôt distant avec tout son historique et configure <code>origin</code>.">
+        <legend><span class="num">2</span> Quelle commande récupère un dépôt GitHub existant avec tout son historique ?</legend>
+        <label class="choix"><input type="radio" name="q2" value="clone"> <code>git clone</code></label>
+        <label class="choix"><input type="radio" name="q2" value="push"> <code>git push</code></label>
+        <label class="choix"><input type="radio" name="q2" value="init"> <code>git init</code></label>
+        <p class="feedback" aria-live="polite"></p>
+      </fieldset>
+
+      <fieldset class="question" data-type="radio" data-answer="add"
+                data-expl="<code>git add</code> place les fichiers dans la zone de préparation, avant le commit.">
+        <legend><span class="num">3</span> Quelle commande faut-il utiliser AVANT <code>git commit</code> pour choisir les fichiers à enregistrer ?</legend>
+        <label class="choix"><input type="radio" name="q3" value="add"> <code>git add</code></label>
+        <label class="choix"><input type="radio" name="q3" value="merge"> <code>git merge</code></label>
+        <label class="choix"><input type="radio" name="q3" value="fetch"> <code>git fetch</code></label>
+        <p class="feedback" aria-live="polite"></p>
+      </fieldset>
+
+      <fieldset class="question" data-type="select" data-answer="push"
+                data-expl="<code>git push</code> envoie tes commits locaux vers GitHub.">
+        <legend><span class="num">4</span> Quelle commande envoie tes commits locaux vers GitHub ?</legend>
+        <label for="q4" class="sr-only">Choisis une commande</label>
+        <select id="q4" name="q4">
+          <option value="">-- Choisis une commande --</option>
+          <option value="pull">git pull</option>
+          <option value="push">git push</option>
+          <option value="switch">git switch</option>
+          <option value="fetch">git fetch</option>
+        </select>
+        <p class="feedback" aria-live="polite"></p>
+      </fieldset>
+
+      <fieldset class="question" data-type="radio" data-answer="fetchmerge"
+                data-expl="<code>git pull</code> équivaut à <code>git fetch</code> + <code>git merge</code>.">
+        <legend><span class="num">5</span> <code>git pull</code> équivaut à…</legend>
+        <label class="choix"><input type="radio" name="q5" value="addcommit"> <code>git add</code> + <code>git commit</code></label>
+        <label class="choix"><input type="radio" name="q5" value="fetchmerge"> <code>git fetch</code> + <code>git merge</code></label>
+        <label class="choix"><input type="radio" name="q5" value="initclone"> <code>git init</code> + <code>git clone</code></label>
+        <p class="feedback" aria-live="polite"></p>
+      </fieldset>
+
+      <fieldset class="question" data-type="checkbox" data-answer="branch,switch,merge"
+                data-expl="Les commandes liées aux branches sont <code>branch</code>, <code>switch</code> et <code>merge</code>. <code>add</code> et <code>clone</code> n'en font pas partie.">
+        <legend><span class="num">6</span> Quelles commandes concernent les branches ? <em>(plusieurs réponses possibles)</em></legend>
+        <label class="choix"><input type="checkbox" name="q6" value="branch"> <code>git branch</code></label>
+        <label class="choix"><input type="checkbox" name="q6" value="switch"> <code>git switch</code></label>
+        <label class="choix"><input type="checkbox" name="q6" value="merge"> <code>git merge</code></label>
+        <label class="choix"><input type="checkbox" name="q6" value="add"> <code>git add</code></label>
+        <label class="choix"><input type="checkbox" name="q6" value="clone"> <code>git clone</code></label>
+        <p class="feedback" aria-live="polite"></p>
+      </fieldset>
+
+      <fieldset class="question" data-type="text" data-answer="--amend,amend"
+                data-expl="<code>git commit --amend</code> corrige le dernier commit (message oublié ou fichier manquant).">
+        <legend><span class="num">7</span> Quelle option de <code>git commit</code> permet de corriger le dernier commit ?</legend>
+        <label for="q7" class="sr-only">Ta réponse</label>
+        <input type="text" id="q7" name="q7" placeholder="Ex : --option" autocomplete="off" autocapitalize="none" spellcheck="false">
+        <p class="feedback" aria-live="polite"></p>
+      </fieldset>
+
+      <fieldset class="question" data-type="radio" data-answer="fetch"
+                data-expl="<code>git fetch</code> télécharge les nouveautés sans les fusionner, donc sans risque de conflit immédiat.">
+        <legend><span class="num">8</span> Quelle commande télécharge les nouveautés du dépôt distant <strong>sans</strong> les fusionner ?</legend>
+        <label class="choix"><input type="radio" name="q8" value="pull"> <code>git pull</code></label>
+        <label class="choix"><input type="radio" name="q8" value="fetch"> <code>git fetch</code></label>
+        <label class="choix"><input type="radio" name="q8" value="merge"> <code>git merge</code></label>
+        <p class="feedback" aria-live="polite"></p>
+      </fieldset>
+
+      <div class="quiz-actions">
+        <button type="submit" class="btn btn-primary">Valider mes réponses</button>
+        <button type="reset" class="btn btn-secondary" id="btn-reset">Recommencer</button>
+      </div>
+
+      <div id="resultat" class="resultat" role="status" aria-live="polite" hidden></div>
+    </form>
+  </div>
+
+  <script>
+    (function () {
+      var form = document.getElementById('quiz-form');
+      var resultat = document.getElementById('resultat');
+      var questions = form.querySelectorAll('.question');
+
+      function normaliser(txt) {
+        return txt.toLowerCase().replace(/\s+/g, '').replace(/^git commit/, '');
+      }
+
+      function lireReponse(q) {
+        var type = q.getAttribute('data-type');
+        if (type === 'radio') {
+          var r = q.querySelector('input:checked');
+          return r ? r.value : '';
+        }
+        if (type === 'checkbox') {
+          var vals = [];
+          q.querySelectorAll('input:checked').forEach(function (c) { vals.push(c.value); });
+          return vals.sort().join(',');
+        }
+        if (type === 'select') {
+          return q.querySelector('select').value;
+        }
+        return normaliser(q.querySelector('input[type="text"]').value);
+      }
+
+      function estCorrect(q, rep) {
+        var type = q.getAttribute('data-type');
+        var attendu = q.getAttribute('data-answer');
+        if (type === 'checkbox') {
+          return rep === attendu.split(',').sort().join(',');
+        }
+        if (type === 'text') {
+          return attendu.split(',').indexOf(rep) !== -1;
+        }
+        return rep === attendu;
+      }
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var score = 0;
+
+        questions.forEach(function (q) {
+          var rep = lireReponse(q);
+          var fb = q.querySelector('.feedback');
+          q.classList.remove('correct', 'incorrect');
+
+          if (estCorrect(q, rep)) {
+            score++;
+            q.classList.add('correct');
+            fb.innerHTML = '✔ Bonne réponse ! ' + q.getAttribute('data-expl');
+          } else {
+            q.classList.add('incorrect');
+            fb.innerHTML = (rep === '' ? '✘ Pas de réponse. ' : '✘ Réponse incorrecte. ') +
+                           q.getAttribute('data-expl');
+          }
+        });
+
+        var prenom = form.prenom.value.trim();
+        var total = questions.length;
+        var msg;
+        if (score === total) msg = 'Parfait, tu maîtrises les commandes essentielles !';
+        else if (score >= total * 0.6) msg = 'Bien joué, relis les corrections pour progresser.';
+        else msg = 'Courage ! Relis la fiche ci-dessus puis réessaie.';
+
+        resultat.innerHTML = '<strong>' + (prenom ? prenom + ', ton' : 'Ton') + ' score : ' +
+                             score + ' / ' + total + '</strong><br>' + msg;
+        resultat.hidden = false;
+        resultat.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+
+      form.addEventListener('reset', function () {
+        questions.forEach(function (q) {
+          q.classList.remove('correct', 'incorrect');
+          q.querySelector('.feedback').innerHTML = '';
+        });
+        resultat.hidden = true;
+      });
+    })();
+  </script>
 
 </body>
 </html>
